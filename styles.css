@@ -189,10 +189,10 @@ a {
     height: 100vh;
     min-height: 700px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     position: relative;
-    background: url('images/hero_bg.png') center/cover no-repeat;
-    padding-top: 80px;
+    background: url('images/hero_bg.jpeg') center/cover no-repeat;
+    padding-top: 180px;
 }
 
 .hero-overlay {
@@ -283,12 +283,62 @@ a {
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
-.about-image img {
-    transition: transform 0.5s ease;
+/* Carousel Specific */
+.carousel-container {
+    height: 450px;
 }
 
-.about-image:hover img {
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out, transform 8s linear;
+}
+
+.carousel-img.active {
+    opacity: 1;
     transform: scale(1.05);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.carousel-btn:hover {
+    background: var(--primary);
+}
+
+.carousel-btn.prev {
+    left: 15px;
+}
+
+.carousel-btn.next {
+    right: 15px;
 }
 
 .glass-badge {
@@ -485,7 +535,7 @@ a {
 ------------------------ */
 .footer {
     padding: 100px 0 50px;
-    background: url('images/hero_bg.png') center/cover no-repeat;
+    background: url('images/hero_bg.jpeg') center/cover no-repeat;
     position: relative;
     text-align: center;
 }

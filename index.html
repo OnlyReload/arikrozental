@@ -19,7 +19,7 @@
     <!-- Header / Navbar -->
     <header class="navbar">
         <div class="logo-container">
-            <h1 class="logo">Only Live Once</h1>
+            <a href="#"><img src="images/logo.png" alt="Only Live Once Logo" class="logo-img" style="height: 40px;"></a>
         </div>
         <nav>
             <a href="#about" data-he="מי אנחנו" data-en="About Us">About Us</a>
@@ -35,7 +35,7 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h2 class="subtitle" data-he="ההשראה:" data-en="The Inspiration:">The Inspiration:</h2>
+            <h2 class="subtitle" data-he="השראה" data-en="Inspiration">Inspiration</h2>
             <h1 class="hero-title" data-he="המשפחה שמטיילת בעולם כבר 6 שנים" data-en="The family exploring the world for 6 years">The family exploring the world for 6 years</h1>
             <p class="hero-desc" data-he="הצטרפו למסע של משפחת רוזנטל, זוג + 4 ילדים, שמיליוני ישראלים עוקבים אחריו באדיקות. השילוב המושלם בין תוכן מעורר השראה לסיפור מיוחד על הגשמת חלומות." data-en="Join the incredible journey of the Rozental family—two parents and four kids—followed passionately by millions across Israel. We blend inspiring travel content with an extraordinary story of fulfilling lifelong dreams.">Join the incredible journey of the Rozental family—two parents and four kids—followed passionately by millions across Israel. We blend inspiring travel content with an extraordinary story of fulfilling lifelong dreams.</p>
             <div class="hero-buttons">
@@ -56,8 +56,14 @@
                     "Our story isn't just about beautiful destinations; it's about breaking boundaries and defying expectations. That’s why millions follow our journey."
                 </blockquote>
             </div>
-            <div class="about-image">
-                <img src="images/family_portrait.png" alt="Family on a journey" loading="lazy">
+            <div class="about-image carousel-container">
+                <div class="carousel">
+                    <img src="images/1.jpg" alt="Family Journey 1" class="carousel-img active" loading="lazy">
+                    <img src="images/2.jpg" alt="Family Journey 2" class="carousel-img" loading="lazy">
+                    <img src="images/3.jpg" alt="Family Journey 3" class="carousel-img" loading="lazy">
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+                <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
                 <div class="glass-badge" data-he="6 שנות מסע" data-en="6 Years Exploring">6 Years Exploring</div>
             </div>
         </div>
@@ -100,7 +106,7 @@
     <section id="stats" class="section stats-section">
         <div class="container stats-container">
             <div class="stats-image">
-                <img src="images/tv_appearance.png" alt="Arik Rozental Lecturer" loading="lazy">
+                <img src="images/tv_appearance.jpeg" alt="Arik Rozental Lecturer" loading="lazy">
             </div>
             <div class="stats-content">
                 <h2 data-he="המספרים וההוכחות (Social Proof)" data-en="The Impact & Social Proof">The Impact & Social Proof</h2>
@@ -175,7 +181,6 @@
             <div class="social-links">
                 <a href="#">Instagram</a>
                 <a href="#">Facebook</a>
-                <a href="https://wa.me/972506661000" target="_blank">WhatsApp</a>
             </div>
             
             <div class="footer-bottom">
@@ -226,6 +231,35 @@
                 el.innerHTML = el.getAttribute(`data-${currentLang}`);
             });
         });
+
+        // Carousel Logic
+        const slides = document.querySelectorAll('.carousel-img');
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            if (index >= slides.length) currentSlide = 0;
+            if (index < 0) currentSlide = slides.length - 1;
+            slides[currentSlide].classList.add('active');
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide++;
+            showSlide(currentSlide);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide--;
+            showSlide(currentSlide);
+        });
+
+        // Auto-play carousel
+        setInterval(() => {
+            currentSlide++;
+            showSlide(currentSlide);
+        }, 5000);
     </script>
 </body>
 </html>
