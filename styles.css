@@ -192,6 +192,7 @@ a {
     align-items: center;
     position: relative;
     background: url('images/hero_bg.png') center/cover no-repeat;
+    padding-top: 80px;
 }
 
 .hero-overlay {
@@ -219,7 +220,7 @@ a {
 }
 
 .hero-title {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1.5rem;
@@ -227,7 +228,7 @@ a {
 }
 
 .hero-desc {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     color: var(--text-gray);
     margin-bottom: 2.5rem;
     max-width: 600px;
@@ -547,6 +548,10 @@ a {
 /* ------------------------
    LTR Support (English)
 ------------------------ */
+html[dir="ltr"] .hero-title {
+    font-size: 2.75rem; /* Make English text fit perfectly without massive wrapping */
+}
+
 html[dir="ltr"] .offer-steps::before {
     right: auto;
     left: 24px;
@@ -560,6 +565,19 @@ html[dir="ltr"] .step {
 html[dir="ltr"] .step-number {
     right: auto;
     left: 0;
+}
+
+html[dir="ltr"] .quote {
+    border-right: none;
+    border-left: 4px solid var(--primary);
+    border-radius: 8px 0 0 8px;
+}
+
+html[dir="ltr"] .stat-item {
+    border-right: none;
+    border-left: 2px solid var(--primary);
+    padding-right: 0;
+    padding-left: 1.5rem;
 }
 
 /* ------------------------
