@@ -580,35 +580,7 @@ html[dir="ltr"] .stat-item {
     padding-left: 1.5rem;
 }
 
-/* ------------------------
-   Floating WhatsApp (Mobile Focus)
------------------------- */
-.floating-wa {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25D366;
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 60px;
-    font-size: 2rem;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-    z-index: 1000;
-    transition: var(--transition);
-}
 
-.floating-wa:hover {
-    transform: scale(1.1);
-}
-
-html[dir="ltr"] .floating-wa {
-    right: auto;
-    left: 20px;
-}
 
 /* ------------------------
    Responsive Design
@@ -645,8 +617,6 @@ html[dir="ltr"] .floating-wa {
     .step-number { width: 40px; height: 40px; font-size: 1.25rem; }
     
     .glass-badge { position: relative; bottom: auto; left: auto; display: block; text-align: center; border-radius: 0 0 20px 20px; }
-    
-    .floating-wa { display: block; } /* Show floating WA on mobile */
 }
 
 @media (max-width: 480px) {
