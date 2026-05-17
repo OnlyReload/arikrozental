@@ -18,8 +18,9 @@
 
     <!-- Header / Navbar -->
     <header class="navbar">
-        <div class="logo-container">
-            <a href="#"><img src="images/logo.png" alt="Only Live Once Logo" class="logo-img" style="height: 40px;"></a>
+        <div class="logo-container" style="display: flex; align-items: center; gap: 10px;">
+            <a href="#" style="display: flex; align-items: center;"><img src="images/logo.png" alt="Only Live Once Logo" class="logo-img" style="height: 40px;"></a>
+            <h1 class="logo" style="margin: 0; font-size: 1.5rem;">Only Live Once</h1>
         </div>
         <nav>
             <a href="#about" data-he="מי אנחנו" data-en="About Us">About Us</a>
@@ -57,10 +58,10 @@
                 </blockquote>
             </div>
             <div class="about-image carousel-container">
-                <div class="carousel">
-                    <img src="images/1.jpg" alt="Family Journey 1" class="carousel-img active" loading="lazy">
-                    <img src="images/2.jpg" alt="Family Journey 2" class="carousel-img" loading="lazy">
-                    <img src="images/3.jpg" alt="Family Journey 3" class="carousel-img" loading="lazy">
+                <div class="carousel" dir="ltr">
+                    <img src="images/1.jpg" alt="Family Journey 1" class="carousel-img">
+                    <img src="images/2.jpg" alt="Family Journey 2" class="carousel-img">
+                    <img src="images/3.jpg" alt="Family Journey 3" class="carousel-img">
                 </div>
                 <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
                 <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
@@ -233,32 +234,33 @@
         });
 
         // Carousel Logic
+        const carousel = document.querySelector('.carousel');
         const slides = document.querySelectorAll('.carousel-img');
         const prevBtn = document.querySelector('.carousel-btn.prev');
         const nextBtn = document.querySelector('.carousel-btn.next');
         let currentSlide = 0;
 
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            if (index >= slides.length) currentSlide = 0;
-            if (index < 0) currentSlide = slides.length - 1;
-            slides[currentSlide].classList.add('active');
+        function updateCarousel() {
+            carousel.style.transform = `translateX(${-currentSlide * 100}%)`;
         }
 
         nextBtn.addEventListener('click', () => {
             currentSlide++;
-            showSlide(currentSlide);
+            if (currentSlide >= slides.length) currentSlide = 0;
+            updateCarousel();
         });
 
         prevBtn.addEventListener('click', () => {
             currentSlide--;
-            showSlide(currentSlide);
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            updateCarousel();
         });
 
         // Auto-play carousel
         setInterval(() => {
             currentSlide++;
-            showSlide(currentSlide);
+            if (currentSlide >= slides.length) currentSlide = 0;
+            updateCarousel();
         }, 5000);
     </script>
 </body>
